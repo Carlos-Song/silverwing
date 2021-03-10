@@ -6,13 +6,13 @@ import {
   SideNavMenu,
   SideNavMenuItem,
 } from "carbon-components-react";
-import React, { FunctionComponent }  from "react";
+import React, { FC }  from "react";
 
 interface SideNavProps {
   expanded: boolean;
 }
 
-const SiSideNav: FunctionComponent<SideNavProps> = (props) => {
+const SiSideNav: FC<SideNavProps> = (props) => {
   const { expanded } = props;
 
 

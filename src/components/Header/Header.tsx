@@ -13,7 +13,7 @@ import {
 } from "carbon-components-react";
 import React, { useRef, useState } from "react";
 
-import { FunctionComponent } from "react";
+import { FC } from "react";
 import { useClickAway } from "react-use";
 import "./header.scss";
 
@@ -22,7 +22,7 @@ interface UIShellProps {
   onClickSideNavExpand?: () => void;
 }
 
-const SiHeader: FunctionComponent<UIShellProps> = (props) => {
+const SiHeader: FC<UIShellProps> = (props) => {
   const inputContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [searchInputText, setSearchText] = useState("");

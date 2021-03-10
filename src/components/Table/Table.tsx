@@ -6,7 +6,7 @@ import {
   TableBody,
   TableCell,
 } from "carbon-components-react";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { Movie } from "../Content/Content";
 
 interface data {
@@ -18,7 +18,7 @@ interface BasicTableProps {
   dataList: Movie[];
 }
 
-const BasicTable: FunctionComponent<BasicTableProps> = ({
+const BasicTable: FC<BasicTableProps> = ({
   headers,
   dataList,
 }) => {

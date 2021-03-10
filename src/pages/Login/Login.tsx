@@ -1,13 +1,13 @@
 import React from "react";
 
-import { FunctionComponent } from "react";
+import { FC } from "react";
 import SiHeader from "components/Header/Header";
 import SiContent from "components/Content/Content";
 import styles from "./index.scss";
 
 interface LoginProps {}
 
-const Login: FunctionComponent<LoginProps> = (props) => {
+const Login: FC<LoginProps> = (props) => {
   return (
     <SiContent>
       {/* <SiHeader /> */}

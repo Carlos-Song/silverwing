@@ -1,5 +1,6 @@
 import React, {
   Component,
+  Fragment,
   ReactNode,
   useEffect,
   useMemo,
@@ -8,18 +9,15 @@ import React, {
 
 import { FunctionComponent } from "react";
 import { useLocation } from "react-router";
-import "./content.scss";
 import SiHeader from "../Header/Header";
 import { Button, Column, Grid, Loading, Row } from "carbon-components-react";
 import { useQuery } from "urql";
 
 import SiSideNav from "../SideNav/SideNav";
 import _ from "lodash";
-import office from "common/assets/jpeg/office.jpg";
-import office2 from "common/assets/jpeg/office2.jpg";
-import forest from "common/assets/jpeg/forest.jpg";
 import BasicTable from "../Table/Table";
 import CenteredGrid from "./ContentMaterial";
+import { useStyles } from "./styles";
 
 interface SiContentProps {
   children?: ReactNode | FunctionComponent | Component | null;
@@ -33,8 +31,6 @@ const getPageName = (pathname: string): string => {
       return "主页";
   }
 };
-
-
 
 
 const MoviesQuery = `
@@ -55,10 +51,15 @@ export interface Movie {
   yearReleased: number;
 }
 
-const SiContent: FunctionComponent<SiContentProps> = () => {
+const SiContent: FunctionComponent<SiContentProps> = (props) => {
   const { pathname } = useLocation();
   const [sideNavExpanded, setSideExpanded] = useState(false);
+
+  // Hook state 使用 useState
   const [movies, setMovies] = useState<Movie[]>([]);
+
+
+  const classes = useStyles();
 
   const onClickSideNavExpand = () => {
     setSideExpanded((prev) => !prev);
@@ -87,14 +88,14 @@ const SiContent: FunctionComponent<SiContentProps> = () => {
   //  the calculation of its own width is inaccurate,
   //  and the left and right distance of grid padding is not subtracted
   return (
-    <>
-      <Grid fullWidth as="main" className="content">
+    <Fragment>
+      <Grid fullWidth as="main" className={classes.contentBody}>
         <SiHeader
           isActive={sideNavExpanded}
           onClickSideNavExpand={onClickSideNavExpand}
         />
-        <Grid className="banner-area">
-          <h1>{pageInfo}</h1>
+        <Grid className={classes.bannerArea}>
+          <h1 className={classes.bannerFontSize}>{pageInfo}</h1>
           {/* <MyEditor /> */}
         </Grid>
         {/* <Grid className="data-container">
@@ -117,7 +118,7 @@ const SiContent: FunctionComponent<SiContentProps> = () => {
           })}
         </Grid> */}
         <CenteredGrid />
-        <Grid className="content-inside">
+        <Grid className={classes.contentInside}>
           {/* <MyEditor /> */}
           {/* <Editor plugins={plugins} initialState={initialState} /> */}
           <Button onClick={onButtonClickHandler}>点击就送</Button>
@@ -132,7 +133,7 @@ const SiContent: FunctionComponent<SiContentProps> = () => {
         {/* <ToastNotification className="toast-global" lowContrast={true} title="测试文本内容" /> */}
       </Grid>
       <SiSideNav expanded={sideNavExpanded} />
-    </>
+    </Fragment>
   );
 };
 
