@@ -7,19 +7,24 @@ export const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       //   padding: 14,
     },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-    },
+
 
     cellContainer: {
-      height: "24rem",
       padding: 0,
       display: "flex",
       flexDirection: "column",
-      margin: "1rem 0",
+      // marginBottom: "1rem",
     },
+
+    paper: {
+    
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+      maxHeight: "100%",
+      display: "flex",
+      flexDirection: "column",
+    },
+
     cellTop: {
       height: "60%",
       display: "grid",
@@ -27,7 +32,8 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     cellImage: {
       width: "100%",
-      objectFit: "scale-down",
+      // maxHeight: "100%",
+      // objectFit: "scale-down",
     },
 
     cellBottom: {
@@ -88,9 +94,6 @@ export const useStyles = makeStyles((theme: Theme) =>
       bannerArea: {
         padding: "2rem",
       },
-    },
-
-    [theme.breakpoints.up("md")]: {
       contentBody: {
         marginLeft: "16rem",
       },

@@ -54,11 +54,10 @@ export default function CenteredGrid() {
 
         {_.range(0, 12).map((opt) => {
           return (
-            <Grid item lg={3} md={4} sm={6} xs={12}>
+            <Grid  className={classes.cellContainer} item lg={3} md={4} sm={6} xs={12}>
               <Paper square elevation={0} className={classes.paper}>
                 <div className={classes.cellTop}>
-                  <img className="cell-image" src={getModNumber(opt)} />
-                  <h2>Block {opt}</h2>
+                  <img className={classes.cellImage} src={getModNumber(opt)} />
                 </div>
                 <div className={classes.cellBottom}>
                   <h5>{getModTitle(opt)}</h5>
